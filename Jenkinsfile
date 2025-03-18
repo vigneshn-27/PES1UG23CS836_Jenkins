@@ -11,13 +11,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'ls -l'   // Debug: List files in workspace
-                sh 'g++ -o hello_exec hello.cpp'
+                sh 'ls -l main'   // Debug: List files in "main" directory
+                sh 'g++ -o main/hello_exec main/hello.cpp'  // Compile from "main" folder
             }
         }
         stage('Test') {
             steps {
-                sh './hello_exec'
+                sh './main/hello_exec'  // Run the compiled program
             }
         }
         stage('Deploy') {
